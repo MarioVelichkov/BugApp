@@ -1,14 +1,83 @@
-# Block C - Data Modelling
+# BugApp
 
-This block will focus on the __*Modeling*__ phase of the __*CRISP-DM*__ lifecycle. You will learn how to conduct market/consumer research and how to build transparent, interpretable, and fair deep learning models for image classification. In addition, you will learn how to integrate these concepts for the development of user-centered applications.
+BugApp is a computer-vision prototype for identifying common garden pests from
+photos. It was designed to help homeowners and gardeners recognize a pest,
+understand which plants may be affected, assess potential risks, and choose an
+appropriate treatment.
 
-## Creative Brief
+![BugApp prototype](BugApp.gif)
 
-The [Innovation Square](https://www.buas.nl/en/collaboration/innovation-square) is your client in this block. The Innovation Square is a dynamic hub at Breda University of Applied Sciences that integrates education, research, and industry. It's a place where collaboration and innovation connects education and practice-oriented research to activities in the relevant industries. They approached you - as an aspiring __Data Scientist__ - to apply your expertise in providing innovative data-driven solutions. In particular, they require your assistance in proposing and developing a creative and innovative application utilizing deep learning for image classification. The challenge is to identify a problem where image classification can provide significant business value and/or societal impact in any area or industry.
+## Project overview
 
-Therefore, the main objective of this project is to develop an image classification application using deep learning and your own image dataset. To this end, you will need to create a project proposal that touches upon the following topics:
-- Market/consumer research and risk assessment;
-- The design and implementation of a transparent, interpretable (and fair) deep learning-based image classifier;
-- The development of a user-centered prototype application for your image classifier.
+The prototype classifies 12 pest categories:
 
-The top 3 projects with the best business value will have the unique opportunity to present their results directly to the Innovation Square and a specially invited group of entrepreneurs from [BUas Startup Support](https://www.buas.nl/en/study/entrepreneurship) (like in the TV shows [Shark Tank](https://en.wikipedia.org/wiki/Shark_Tank) and [Dragons' Den](https://en.wikipedia.org/wiki/Dragons%27_Den_(British_TV_programme))), which can provide valuable insights and even support for further development of the projects, potentially transforming your academic projects into viable and standalone business ventures. This is more than just a project; it's a potential launchpad for your entrepreneurial journey!
+- Ant
+- Bee
+- Beetle
+- Caterpillar
+- Earthworm
+- Earwig
+- Grasshopper
+- Moth
+- Slug
+- Snail
+- Wasp
+- Weevil
+
+The dataset was based on the
+[Agricultural Pests Image Dataset](https://www.kaggle.com/datasets/vencerlanz09/agricultural-pests-image-dataset)
+and supplemented with additional web images to improve class balance. Images
+were manually divided into training, validation, and test sets using an
+approximately 70/20/10 split.
+
+Several convolutional-network iterations were evaluated. The strongest
+documented result used transfer learning with MobileNetV2 and 64 × 64 input
+images, reaching approximately **73.3% test accuracy** with a test loss of
+**0.84**. The error analysis found that visually similar classes—especially
+beetles versus caterpillars and slugs versus snails—remained the main source of
+misclassification.
+
+## Product concept
+
+BugApp was designed around four user needs:
+
+- Fast identification of a photographed pest
+- Information about plants commonly affected by that pest
+- Practical pest-management guidance
+- Clear safety information about risks to people
+
+Two interface variants were evaluated through an A/B study. The measured
+differences were not statistically significant, indicating that further
+qualitative research and interface iteration would be more useful than choosing
+between the tested variants based on the available sample.
+
+## Repository contents
+
+| Path | Contents |
+| --- | --- |
+| `Deliverables/` | Creative brief, model experiments, analysis, and project presentation |
+| `AB_test/` | Prototype variants, survey data, statistical analysis, and report |
+| `DataLab/` | Deep-learning and explainable-AI experiments |
+| `Extra Challenges/` | Additional computer-vision exercises |
+| `Courses/` | Supporting UX and design coursework certificates |
+
+## Project artifacts
+
+- [Demo video](demo_video.mp4)
+- [Project presentation](Deliverables/Project-Presentation.pdf)
+- [Infographic](infographic_230623.pdf)
+- [Creative brief and model analysis](Deliverables/CreativeBrief_MarioVelichkov_230623.ipynb)
+- [A/B testing report](<AB_test/A&B Test.pdf>)
+
+## Reproducibility notes
+
+This repository is a portfolio archive of the research, experiments, and
+prototype artifacts. The image dataset and trained model weights are not
+included, and some notebook cells reference the original local dataset paths.
+Reproducing the reported model therefore requires downloading the source
+dataset, recreating the documented splits, and updating those paths.
+
+## Status
+
+BugApp is an academic prototype and should not be treated as a professional
+pest-control or safety assessment tool.
